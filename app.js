@@ -19,3 +19,4 @@ app.get("/", (req, res) => {
 // middleware to use postsRouter
 
 app.use("/api/v1/posts", postsRouter)
+
