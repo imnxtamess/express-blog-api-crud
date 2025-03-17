@@ -40,23 +40,24 @@ function show(req, res) {
 
 function store(req, res) {
 
-  // create a new id starting form the last id of the already existing list
-  const newId = menu[menu.length - 1].id + 1;
+  const newSlug = req.body.title.toLowerCase().replaceAll(" ", "-")
 
-  // create a new pizza object
-  const newPizza = {
-    id: newId,
-    name: req.body.name,
-    img: req.body.image,
-    ingredients: req.body.ingredients
+  console.log(newSlug);
+
+
+  const newPost = {
+    title: req.body.title,
+    slug: newSlug,
+    content: req.body.content,
+    image: req.body.image,
+    tags: req.body.tags
   }
 
-  menu.push(newPizza);
-
-  console.log(menu);
+  posts.push(newPost)
+  console.log(posts)
 
   res.status(201)
-  res.json(newPizza)
+  res.json(newPost)
 }
 
 // update (update)
