@@ -63,13 +63,63 @@ function store(req, res) {
 // update (update)
 
 function update(req, res) {
-  res.send(`Update the post of slug ${req.params.slug}`)
+  const postSlug = (req.params.slug)
+
+  const post = posts.find(post => post.slug === postSlug)
+
+  // handle 404 error
+
+  if (!post) {
+
+    return res.status(404).json({
+      error: "404 Not Found",
+      message: "Post not found"
+    })
+
+  }
+
+  const newSlug = req.body.title.toLowerCase().replaceAll(" ", "-")
+  // return the  updated post
+  post.title = req.body.title
+  post.slug = newSlug
+  post.content = req.body.content
+  post.image = req.body.image
+  post.tags = req.body.tags
+
+  res.json(post)
+  console.log(posts);
+
 }
 
 // modify (update)
 
 function modify(req, res) {
-  res.send(`Modify the post of slug ${req.params.slug}`)
+  const postSlug = (req.params.slug)
+
+  const post = posts.find(post => post.slug === postSlug)
+
+  // handle 404 error
+
+  if (!post) {
+
+    return res.status(404).json({
+      error: "404 Not Found",
+      message: "Post not found"
+    })
+
+  }
+
+  const newSlug = req.body.title.toLowerCase().replaceAll(" ", "-")
+  // update the post
+  post.title = req.body.title
+  post.slug = newSlug
+  post.content = req.body.content
+  post.image = req.body.image
+  post.tags = req.body.tags
+  // return the  updated post
+  res.json(post)
+  console.log(posts);
+
 }
 
 // destroy (delete)
