@@ -39,7 +39,24 @@ function show(req, res) {
 // store (create)
 
 function store(req, res) {
-  res.send("Create new post")
+
+  // create a new id starting form the last id of the already existing list
+  const newId = menu[menu.length - 1].id + 1;
+
+  // create a new pizza object
+  const newPizza = {
+    id: newId,
+    name: req.body.name,
+    img: req.body.image,
+    ingredients: req.body.ingredients
+  }
+
+  menu.push(newPizza);
+
+  console.log(menu);
+
+  res.status(201)
+  res.json(newPizza)
 }
 
 // update (update)

@@ -9,6 +9,8 @@ const postsRouter = require("./routers/postsRouter")
 
 app.use(express.static("public"))
 
+// body parser for "application/json"
+app.use(express.json())
 
 app.listen(port, () => {
   console.log(`Server currently up and running on port: http://localhost:${port}`);
