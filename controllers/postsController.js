@@ -113,9 +113,7 @@ function modify(req, res) {
   // update the post
   post.title = req.body.title
   post.slug = newSlug
-  post.content = req.body.content
-  post.image = req.body.image
-  post.tags = req.body.tags
+
   // return the  updated post
   res.json(post)
   console.log(posts);
