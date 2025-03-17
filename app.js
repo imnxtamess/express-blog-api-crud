@@ -2,9 +2,13 @@ const express = require("express");
 const app = express()
 const port = 3000;
 
+
 //import postsRouter
 
 const postsRouter = require("./routers/postsRouter")
+
+app.use(express.static("public"))
+
 
 app.listen(port, () => {
   console.log(`Server currently up and running on port: http://localhost:${port}`);
