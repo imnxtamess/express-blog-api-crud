@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express()
 const port = 3000;
+const serverError = require("./middlewares/serverError")
+const error404 = require("./middlewares/error_404")
 
 
 //import postsRouter
@@ -17,7 +19,6 @@ app.listen(port, () => {
 })
 
 app.get("/", (req, res) => {
-
   res.send("Welcome to our server")
 
 })
@@ -26,3 +27,6 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/posts", postsRouter)
 
+app.use(serverError)
+
+app.use(error404)
