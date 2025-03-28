@@ -11,7 +11,7 @@ const error404 = require("./middlewares/error_404")
 const postsRouter = require("./routers/postsRouter")
 
 app.use(cors({
-  origin: 'http://localhost:5175'
+
 }));
 
 app.use(express.static("public"))
