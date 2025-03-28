@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express()
+const cors = require("cors")
 const port = 3000;
 const serverError = require("./middlewares/serverError")
 const error404 = require("./middlewares/error_404")
@@ -8,6 +9,10 @@ const error404 = require("./middlewares/error_404")
 //import postsRouter
 
 const postsRouter = require("./routers/postsRouter")
+
+app.use(cors({
+  origin: 'http://localhost:5175'
+}));
 
 app.use(express.static("public"))
 
