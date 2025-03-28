@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express()
 const cors = require("cors")
-const port = 3000;
+const port = 8000;
 const serverError = require("./middlewares/serverError")
 const error404 = require("./middlewares/error_404")
 
